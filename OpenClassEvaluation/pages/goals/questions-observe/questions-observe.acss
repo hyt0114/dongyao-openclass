@@ -37,11 +37,11 @@ radio{
   color:red;
 }
 .close-btn{
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
   position: absolute;
   top: 2rpx;
   right: 2rpx;
   background: url('/assets/img/remove.png') no-repeat;
-  background-size:40rpx; 
+  background-size:cover; 
 }
