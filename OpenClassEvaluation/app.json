@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/goals/student-event/student-event",
+    "pages/goals/teach-event/teach-event",
+    "pages/goals/questions-observe/questions-observe",
+    "pages/goals/evaluation/evaluation",
+    "pages/goals/observe-result/observe-result",
+    "pages/goals/observe-result-add/observe-result-add"
+  ],
+  "window": {
+    "defaultTitle": "课堂评价系统"
+  }
+}

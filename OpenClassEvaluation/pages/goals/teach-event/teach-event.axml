@@ -1,0 +1,60 @@
+<view>
+  <header title="{{title}}"/>
+  <view class="container">
+    <view class="leader-row">
+      <text class="info-item"><text class="label">学校</text>{{infos.schoolName}}</text>
+      <text class="info-item"><text class="label">班级</text>{{infos.className}}</text>
+      <text class="info-item"><text class="label">学生总数</text>{{infos.studentCount}}</text>
+    </view>
+    <view class="leader-row">
+      <text class="info-item">
+        <text class="label">教学内容</text>
+        <input class="input-bb input-long" maxlength="10"/>
+      </text>
+    </view>
+    <view class="leader-row">
+      <text class="info-item">
+        <text class="label">课型</text>
+        <radio-group class="radio-group-in-row" name="classType" onChange="checkClassType">
+          <block a:for="{{types}}" key="label-{{index}}">
+            <label class="radio {{form.classType == item.value ? 'checked':''}}" >
+              <radio value="{{item.value}}" checked="{{form.classType == item.value}}"/>
+              <text class="radio-text">{{item.text}}</text>
+            </label>
+            <input placeholder="填写说明" class="input-bb input-short" a:if="{{form.classType == item.value && item.extend == true}}"/>
+          </block>
+        </radio-group>
+      </text>
+    </view>
+    <view class="leader-row">
+      <text class="info-item">
+        <text class="label">执教人</text>{{infos.teacher}}
+      </text>
+      <text class="info-item">
+        <text class="label">记录人</text><input class="input-bb input-long" maxlength="10"/>
+      </text>
+     </view>
+     <view class="progress-block">
+        <view class="progress-bar" a:for="{{progressbars}}">
+          <view class="progress-title">{{item.title}}</view>
+          <view class="progress" onTap="record" data-key="{{item.id}}">
+            <view class="outter">
+              <view class="inner {{item.id}}" style="width:{{item.progress}}%;"></view>
+            </view>
+          </view>
+          <view class="progress-time {{item.id}}">{{item.showMinute}}:{{item.showSeconds}}</view>
+          <view class="progress-btn">
+            <view class="btn btn-primary btn-mini"  a:if="{{item.primary && !teaching}}" onTap="startClass">{{item.progress? '继续':'开始'}}</view>
+            <view class="btn btn-danger btn-mini"  a:if="{{item.primary && teaching}}" onTap="pauseClass">暂停</view>
+            <view class="btn btn-default btn-mini" a:if="{{item.lastAdd && teaching}}" onTap="feedback" data-key="{{item.id}}">撤销</view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="btn-block">
+        <view class="btn btn-primary" onTap="submitForm">
+        提交
+        </button>
+      </view>
+  </view>
+</view>

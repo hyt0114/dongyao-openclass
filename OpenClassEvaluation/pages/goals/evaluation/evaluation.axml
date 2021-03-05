@@ -1,0 +1,23 @@
+<view>
+  <header title={{title}}></header>
+  <view class="container">
+    <view>
+      <text class="info-item"><text class="label">学校</text>{{infos.schoolName}}</text>
+      <text class="info-item"><text class="label">班级</text>{{infos.className}}</text>
+      <text class="info-item"><text class="label">学生总数</text>{{infos.studentCount}}</text>
+      <text class="info-item"><text class="label">执教人</text>{{infos.teacher}}</text>
+      <text class="info-item"><text class="label">记录人</text>{{infos.recorder}}</text>
+    </view>
+    <view>
+      <text class="bold label">《{{subject}}》教学目标评课</text>
+    </view>
+    <view>
+       <textarea class="input-textarea" placeholder="写点评价" maxlength="1000"/>
+    </view>
+    <view class="btn-block">
+        <view class="btn btn-primary" onTap="">
+        提交
+        </view>
+    </view>
+  </view>
+</view>

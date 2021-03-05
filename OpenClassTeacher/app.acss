@@ -1,0 +1,176 @@
+page{
+  font-size: 18rpx;
+  background-color: #fff;
+  padding:20rpx 20rpx 60rpx 20rpx;
+  font-size: 34rpx;
+  color:rgba(25,31,37,.72);
+}
+.header{
+  font-size: 50rpx;
+  color:#409afe;
+  text-align: center;
+  margin:8rpx 0 20rpx 0;
+  font-weight: bold;
+}
+.form-row{
+  display: flex;
+  height:88rpx;
+  line-height: 88rpx;
+}
+.form-row-label{
+  width:180rpx;
+  font-size: 34rpx;
+  color:#000;
+  text-align: left;
+  padding-right:28rpx;
+  height:100%;
+}
+.form-row-content{
+  flex: 1;
+  height:100%;
+}
+.form-picker{
+  width: 100%;
+  height:100%;
+  background: url("assets/img/arrow-right.png") no-repeat; 
+  background-size: .36rem;
+  background-position: right center;
+}
+.form-row-content .input{
+  height:100%;
+  padding:0;
+  margin:0;
+}
+.border-b{
+  border-bottom:1px solid rgba(25,31,37,.08);
+}
+.btns-block{
+  margin-top:50rpx;
+  width:100%;
+  text-align: center;
+}
+.btn-block{
+  display: block !important;
+}
+.btn{
+  min-width:200rpx;
+  border:1px solid #191f25;
+  border-radius: 10rpx;
+  text-align: center;
+  padding:12rpx 20rpx;
+  font-size:32rpx;
+  display: inline-block;
+  line-height:1;
+}
+.btn-sm{
+  min-width:64rpx !important;
+  font-size:26rpx;
+  padding:10rpx 15rpx;
+}
+.btn-primary{
+  background-color:#3296fa;
+  border:1px solid #409afe;
+  color:#fff;
+}
+.btn-success{
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
+}
+/*flex-table*/
+.flex-table-row{
+  display: flex;
+}
+.flex-table-header{
+  background: #d9ecff;
+  color:#409afe;
+}
+.flex-table-column{
+  flex:1;
+  text-align: center;
+  height:60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  border-bottom:2rpx solid rgba(25,31,37,.36);
+}
+.flex-table-column-half{
+  flex:.5 !important;
+}
+.flex-table-column-2{
+  flex:2 !important;
+}
+/*text*/
+.text-default{color:rgba(25,31,37,.56) !important;}
+.text-primary{color:#3296fa !important;}
+.text-danger{color:#f25643 !important;}
+.text-warning{color:#ff943e !important;}
+.text-success{color:#15bc83 !important;}
+.text-light{color:#fff !important;}
+/*text-align*/
+.text-center{text-align: center !important;}
+.text-start{text-align: left !important;}
+.text-end{text-align: right !important;}
+/*background*/
+.bg-primary{
+  background-color: #3296fa !important;
+}
+.bg-danger{
+  background-color: #f25643 !important;
+}
+.bg-warning{
+  background-color: #ff943e !important;
+}
+.bg-success{
+  background-color: #15bc83 !important;
+}
+/*padding*/
+.md-10{margin:10rpx !important;}
+.md-20{margin:20rpx !important;}
+.md-30{margin:30rpx !important;}
+.md-40{margin:40rpx !important;}
+.md-50{margin:50rpx !important;}
+.mt-10{margin-top:10rpx !important;}
+.mt-20{margin-top:20rpx !important;}
+.mt-30{margin-top:30rpx !important;}
+.mt-40{margin-top:40rpx !important;}
+.mt-50{margin-top:50rpx !important;}
+.mb-10{margin-bottom:10rpx !important;}
+.mb-20{margin-bottom:20rpx !important;}
+.mb-30{margin-bottom:30rpx !important;}
+.mb-40{margin-bottom:40rpx !important;}
+.mb-50{margin-bottom:50rpx !important;}
+.ms-10{margin-left:10rpx !important;}
+.ms-20{margin-left:20rpx !important;}
+.ms-30{margin-left:30rpx !important;}
+.ms-40{margin-left:40rpx !important;}
+.ms-50{margin-left:50rpx !important;}
+.me-10{margin-right:10rpx !important;}
+.me-20{margin-right:20rpx !important;}
+.me-30{margin-right:30rpx !important;}
+.me-40{margin-right:40rpx !important;}
+.me-50{margin-right:50rpx !important;}
+.pd-10{padding:10rpx !important;}
+.pd-20{padding:20rpx !important;}
+.pd-30{padding:30rpx !important;}
+.pd-40{padding:40rpx !important;}
+.pd-50{padding:50rpx !important;}
+.pt-10{padding-top:10rpx !important;}
+.pt-20{padding-top:20rpx !important;}
+.pt-30{padding-top:30rpx !important;}
+.pt-40{padding-top:40rpx !important;}
+.pt-50{padding-top:50rpx !important;}
+.pb-10{padding-bottom:10rpx !important;}
+.pb-20{padding-bottom:20rpx !important;}
+.pb-30{padding-bottom:30rpx !important;}
+.pb-40{padding-bottom:40rpx !important;}
+.pb-50{padding-bottom:50rpx !important;}
+.ps-10{padding-left:10rpx !important;}
+.ps-20{padding-left:20rpx !important;}
+.ps-30{padding-left:30rpx !important;}
+.ps-40{padding-left:40rpx !important;}
+.ps-50{padding-left:50rpx !important;}
+.pe-10{padding-right:10rpx !important;}
+.pe-20{padding-right:20rpx !important;}
+.pe-30{padding-right:30rpx !important;}
+.pe-40{padding-right:40rpx !important;}
+.pe-50{padding-right:50rpx !important;}

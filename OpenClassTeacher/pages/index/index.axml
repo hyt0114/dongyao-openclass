@@ -1,0 +1,171 @@
+<view >
+  <view class="header">课堂申请</view>
+  <form>
+    <view class="form-row border-b">
+      <view class="form-row-label">课堂主题</view>
+      <view class="form-row-content">
+        <input name="subject" class="input" placeholder="请输入课堂主题"  onInput="bindKeyInput" data-key="classTopics"/>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">学校</view>
+      <view class="form-row-content">
+        <text>东瑶小学</text>
+      </view>
+    </view>
+    
+     <view class="form-row border-b">
+      <view class="form-row-label">班级</view>
+      <view class="form-row-content">
+        <picker value="{{classIndex}}" range="{{formOptions.teacherClasses}}" range-key="className" onChange="bindChangeClassName">
+          <view class="form-picker">{{formOptions.teacherClasses[classIndex].className}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">人数</view>
+      <view class="form-row-content">
+        <input class="input" type="number" onInput="bindKeyInput" data-key="studentNum" value="0">
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">执教人</view>
+      <view class="form-row-content">
+        <text>{{userInfo.name}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">开课时间</view>
+      <view class="form-row-content">
+        <view class="form-picker" onTap="showDatePicker">{{form.classTime}}</view>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">开课地点</view>
+      <view class="form-row-content">
+        <picker value="{{addrIndex}}" range="{{addrs}}">
+          <view class="form-picker">{{addrs[addrIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <!--page one end-->
+    <view class="form-row border-b">
+      <view class="form-row-label">座位模式</view>
+      <view class="form-row-content">
+        <picker onChange="bindModeChange" value="{{mode}}" range="{{formOptions.modeOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.modeOptions[mode].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view a:if="{{mode == 0}}">
+      <view class="flex-seats">
+        <view class="standard-group" a:for={{groups}} a:for-item="group" a:for-index="gidx">
+          <view class="count-picker" catchTap="showPickpanelSeats" data-index="{{gidx}}" data-left="{{group.left}}" data-right="{{group.right}}">{{group.left}}-{{group.right}}</view>
+          <view class="big-group">
+            <view class="left-group group-item">
+              <view class="seat" a:for="{{group.left}}" a:for-index="lidx"> </view>
+            </view>
+            <view class="right-group group-item">
+              <view class="seat {{(ridx+1) > group.left ? 'border-left':''}}" a:for="{{group.right}}" a:for-index="ridx" > </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--end of standard seats-->
+    <view a:elif="{{mode == 1}}">
+      <view class="flex-table">
+        <view class="flex-table-row flex-table-header">
+          <view class="flex-table-column">
+            组别
+          </view>
+          <view class="flex-table-column">
+            人数
+          </view>
+          <view class="flex-table-column flex-table-column-half">
+            操作
+          </view>
+        </view>
+        <view class="flex-table-row" a:for="{{lineGroups}}">
+          <view class="flex-table-column">
+            {{index+1}}
+          </view>
+          <view class="flex-table-column">
+            <input type="number" class="input" value="{{item}}" onInput="bindGroupCountChange" data-index="{{index}}">
+          </view>
+          <view class="flex-table-column bg-danger text-light flex-table-column-half" onTap="removeOneGroup" data-index="{{index}}">
+            删除
+          </view>
+        </view>
+      </view>
+      
+      <view class="btns-block">
+        <view class="btn btn-sm btn-success" onTap="addLineGroup">
+          +
+        </view>
+      </view>
+    </view>
+    <!--end of group seats-->
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">教学活动</view>
+      <view class="form-row-content">
+        <picker onChange="bindEventChange" value="{{eventType}}" range="{{formOptions.eventOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.eventOptions[eventType].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="flex-table">
+      <view class="flex-table-row flex-table-header">
+        <view class="flex-table-column text-start" a:for="{{tableData.headers}}">
+          {{item}}
+        </view>
+        <view class="flex-table-column flex-table-column-half" a:if="{{eventType == 1}}">操作</view>
+      </view>
+      <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
+        <view class="flex-table-column text-start">
+          {{row.title}}
+        </view>
+        <view class="flex-table-column text-start">
+          {{row.value}}
+        </view>
+        <view class="flex-table-column flex-table-column-half text-light bg-danger" a:if="{{eventType == 1}}" onTap="removeOneEvent" data-index="{{index}}">
+          删除
+        </view>
+      </view>
+    </view>
+    <view class="btns-block">
+      <view class="btn btn-sm btn-success" a:if="{{eventType == 1}}" onTap="showAddPanelEvent">
+        +
+      </view>
+    </view>
+    <view class="btns-block">
+      <view class="btn btn-primary" onTap="submitForm">
+        提交
+      </view>
+    </view>
+  </form>
+</view>
+<pickpanel show="{{showPickpanelSeats}}" onHide="hidePickpanelSeats">
+  <picker-view value="{{editGroup.payload}}" onChange="onSeatPickerChange">
+    <picker-view-column>
+      <view a:for="{{8}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view a:for="{{8}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</pickpanel>
+<pickpanel show="{{showAddPanelEvent}}" onHide="hideAddPanelEvent" onSure="doAddTeachEvent">
+  <view class="form-row border-b">
+    <view class="form-row-label">活动类型</view>
+    <view class="form-row-content">
+      <input class="input" placeholder="活动类型"  onInput="bindAddKeyInput" data-key="addTitle"/>
+    </view>
+  </view>
+  <view class="form-row border-b">
+    <view class="form-row-label">评分标准</view>
+    <view class="form-row-content">
+      <input type="number" class="input" placeholder="评分标准"  onInput="bindAddKeyInput" data-key="addValue"/>
+    </view>
+  </view>
+</pickpanel>

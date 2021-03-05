@@ -1,0 +1,118 @@
+<view>
+  <view class="header">课堂申请详情</view>
+  <form>
+    <view class="form-row border-b">
+      <view class="form-row-label">课堂主题</view>
+      <view class="form-row-content">
+        <text>{{classInfo.classTopic}}</text> 
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">学校</view>
+      <view class="form-row-content">
+         <text>{{classInfo.schoolNm}}</text> 
+      </view>
+    </view>
+    
+     <view class="form-row border-b">
+      <view class="form-row-label">班级</view>
+      <view class="form-row-content">
+        <text>{{classInfo.classNm}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">人数</view>
+      <view class="form-row-content">
+        <text>{{classInfo.studentNum}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">执教人</view>
+      <view class="form-row-content">
+        <text>{{classInfo.teacher}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">开课时间</view>
+      <view class="form-row-content">
+        <text>{{classInfo.classTime}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">开课地点</view>
+      <view class="form-row-content">
+        <text>{{classInfo.classAddr}}</text>
+      </view>
+    </view>
+    <!--page one end-->
+    <view class="form-row border-b">
+      <view class="form-row-label">座位模式</view>
+      <view class="form-row-content">
+        <text>{{formOptions.modeOptions[classInfo.seatModel].text}}</text>
+      </view>
+    </view>
+    <view a:if="{{classInfo.seatModel == 0}}">
+      <view class="flex-seats">
+        <view class="standard-group" a:for={{classInfo.seatDetail}} a:for-item="group" a:for-index="gidx">
+          
+          <view class="big-group">
+            <view class="left-group group-item">
+              <view class="seat" a:for="{{group.left}}" a:for-index="lidx"> </view>
+            </view>
+            <view class="right-group group-item">
+              <view class="seat {{(ridx+1) > group.left ? 'border-left':''}}" a:for="{{group.right}}" a:for-index="ridx" > </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--end of standard seats-->
+    <view a:elif="{{classInfo.seatModel == 1}}">
+      <view class="flex-table">
+        <view class="flex-table-row flex-table-header">
+          <view class="flex-table-column">
+            组别
+          </view>
+          <view class="flex-table-column">
+            人数
+          </view>
+        </view>
+        <view class="flex-table-row" a:for="{{classInfo.seatDetail}}">
+          <view class="flex-table-column">
+            {{index+1}}
+          </view>
+          <view class="flex-table-column">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--end of group seats-->
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">教学活动</view>
+      <view class="form-row-content">
+         <text>{{formOptions.eventOptions[classInfo.teachingModel].text}}</text>
+      </view>
+    </view>
+    <view class="flex-table">
+      <view class="flex-table-row flex-table-header">
+        <view class="flex-table-column" a:for="{{tableData.headers}}">
+          {{item}}
+        </view>
+      </view>
+      <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
+        <view class="flex-table-column">
+          {{row.title}}
+        </view>
+        <view class="flex-table-column">
+          {{row.value}}
+        </view>
+      </view>
+    </view>
+    <view class="btns-block">
+      <view class="btn btn-primary" onTap="goback">
+        返回
+      </view>
+    </view>
+  </form>
+</view>

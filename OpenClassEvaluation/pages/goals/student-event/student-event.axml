@@ -1,0 +1,65 @@
+<view>
+  <header title={{title}}></header>
+  <view class="container">
+    <view>
+      <text class="info-item"><text class="label">学校</text>{{infos.schoolName}}</text>
+      <text class="info-item"><text class="label">班级</text>{{infos.className}}</text>
+      <text class="info-item"><text class="label">学生总数</text>{{infos.studentCount}}</text>
+      <text class="info-item"><text class="label">执教人</text>{{infos.teacher}}</text>
+      <text class="info-item"><text class="label">记录人</text><input class="input-bb input-long" maxlength="10"/></text>
+    </view>
+    <view>
+      <view class="teacher-desktop">讲台</div>
+    </view>
+    <view a:if="{{infos.seats.standard}}" class="standard-seats-block">
+      <view a:for="{{infos.seats.standard}}" class="big-group-wrapper" a:for-item="group">
+        <view class="big-group">
+          <view class="group left">
+            <view class="group-seat" a:for="{{group.left.count}}" a:for-item="seat">{{group.left.groupId}}-{{seat}}</view>
+          </view>
+          <view class="group right">
+            <view class="group-seat" a:for="{{group.right.count}}" a:for-item="seat">{{group.right.groupId}}-{{seat}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view a:if="{{infos.seats.group}}" class="group-seats-block">
+      <view a:for="{{infos.seats.group}}" a:for-index="gidx" a:for-item="lineGroup" class="line-group">
+        <view class="line-seat">{{lineGroup.groupName}}</view>
+        <view a:for="{{lineGroup.count}}" a:for-index="idx" class="line-seat" onTap="showPopDetail" data-group="{{gidx+1}}" data-seat="{{idx+1}}">
+          {{gidx+1}}-{{idx+1}}
+          <view class="eva-data-block">
+            <image class="mini-image" a:for="{{answerData[(gidx+1)+''+(idx+1)].correct}}" src="/assets/img/check-success.png"/>
+            <image class="mini-image" a:for="{{answerData[(gidx+1)+''+(idx+1)].core}}" src="/assets/img/stars.png"/>
+            <image class="mini-image" a:for="{{answerData[(gidx+1)+''+(idx+1)].doubt}}" src="/assets/img/question.png"/>
+            <image class="mini-image" a:for="{{answerData[(gidx+1)+''+(idx+1)].error}}" src="/assets/img/error.png"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="together-block">
+      <text>集体回答:</text>
+    </view>
+    <view class="statistic-block" a:if="{{1==2}}">
+      <view>A、学生回答问题总次数（<text class="info-text">{{statistics.totalAnswerCount}}</text>）人次，人均（<text class="info-text">{{statistics.averageAnswerCount}}</text>）人次</view>
+      <view>B、回答问题学生数（<text class="info-text">{{statistics.answerStudentCount}}</text>）人，占全班的（<text class="info-text">{{statistics.answerStudentPercent}}</text>）%</view>
+      <view>C、学生正确回答占回答问题总次数的（<text class="info-text">{{statistics.correctPercent}}</text>）%</view>
+      <view>D、学生正确回答核心问题占核心问题总数的（<text class="info-text">{{statistics.corePercent}}</text>）%</view>
+    </view>
+    <view class="btn-block">
+        <view class="btn btn-primary" onTap="submitForm">
+        提交
+        </view>
+      </view>
+  </view>
+</view>
+<popup show="{{showPopDetail}}" onSure="comfirmDetail" onHide="hidePopDetail">
+  <view class="text-center mt-20">
+    <checkbox-group onChange="bindDetailValue" data-key="outter" data-index="{{index}}">
+      <label class="checkbox {{item.css}} {{tempDetail.includes(item.value) ? 'checked' :''}}" a:for="{{detailOptions}}" key="label-{{index}}">
+        <checkbox value="{{item.value}}" checked="{{tempDetail.includes(item.value)}}"/>
+        <text class="checkbox-text">{{item.title}}</text>
+      </label>
+    </checkbox-group>
+  </view>
+</popup>

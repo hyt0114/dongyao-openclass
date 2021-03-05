@@ -1,0 +1,9 @@
+input.w100{
+  width: 100%;
+}
+.form-row-label{
+  width:150rpx;
+}
+.radio,.checkbox{
+  margin:0 5rpx;
+}

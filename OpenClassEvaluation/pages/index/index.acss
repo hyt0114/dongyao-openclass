@@ -1,0 +1,44 @@
+.goals{
+  margin-top: 20rpx;
+  padding-left:10rpx;
+  padding-right:10rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.goals .goal-block {
+  text-align: center;
+  flex:1 0 0%;
+  padding:3rpx 5rpx;
+}
+.goals .goal-block .block-content{
+  height:60rpx;
+  line-height: 60rpx;
+  border:1px solid #000;
+  border-radius: 5rpx;
+  font-weight: bold;
+  font-size: 26rpx;
+}
+.open-class-infos{
+  margin-top:100rpx;
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.open-class-infos .info{
+  line-height: 50rpx;
+  display: flex;
+}
+.open-class-infos .info .label,.open-class-infos .info .content{
+  flex:1 0 0%;
+}
+.open-class-infos .info .label{
+  text-align: right;
+}
+.open-class-infos .info .label:after{
+  content:" : "
+}
+.open-class-infos .info .content{
+  text-align: left;
+  width: 50%;
+  padding-left:10rpx;
+}

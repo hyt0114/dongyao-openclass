@@ -1,0 +1,112 @@
+.leader-row{
+  margin:5rpx 0;
+}
+.info-item{
+  margin: 0 5rpx;
+  color:#191f25;
+}
+.info-item:first-child{
+  margin: 0 5rpx 0 0;
+  color:#191f25;
+}
+.info-item .label{
+  font-weight: bold;
+  color:#000;
+}
+.info-text{
+  color:#409afe;
+}
+.half-input{
+  width:80rpx !important;
+}
+.progress-block{
+  margin-top:20rpx;
+}
+.progress-bar{
+  margin-top:10rpx;
+  margin-bottom:10rpx;
+  display: flex;
+  flex-wrap: wrap;
+  height:32rpx;
+  line-height: 32rpx;
+}
+.progress-bar .progress-title{
+  width:130rpx;
+  font-weight: bold;
+}
+.progress-bar .progress{
+  width:400rpx;
+}
+.progress-bar .progress .outter{
+  height: 100%;
+  border-radius: 100px;
+  background-color: #ebeef5;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+.progress-bar .progress .inner{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  text-align: right;
+  border-radius: 100px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: width .6s ease;
+}
+.progress-bar .progress .inner.main{
+  background-color:#f56c6c;
+}
+.progress-bar .progress .inner.teach{
+  background-color:#409eff;
+}
+.progress-bar .progress .inner.interactive{
+  background-color:#67c23a;
+}
+.progress-bar .progress .inner.cooperation{
+  background-color:#e6a23c;
+}
+.progress-bar .progress .inner.think{
+  background-color:#CCCCFF;
+}
+.progress-bar .progress-time{
+  flex:1 0 0%;
+  text-align: center;
+}
+.progress-bar .progress-time.main{
+  color:#f56c6c;
+}
+.progress-bar .progress-time.teach{
+  color:#409eff;
+}
+.progress-bar .progress-time.interactive{
+  color:#67c23a;
+}
+.progress-bar .progress-time.cooperation{
+  color:#e6a23c;
+}
+.progress-bar .progress-time.think{
+  color:#CCCCFF;
+}
+.progress-bar .progress-btn{
+  flex:1 0 0%;
+}
+.progress-bar .progress-btn .btn-mini{
+  min-width:50rpx;
+  height:24rpx;
+  font-size:16rpx;
+  border-radius: 10rpx;
+  line-height:24rpx;
+  padding:0;
+}
+input{
+  line-height: 1;
+}
+.input-short{
+  width:100rpx;
+}
+.input-long{
+  width:320rpx;
+}

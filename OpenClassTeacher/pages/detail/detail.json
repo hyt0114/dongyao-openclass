@@ -1,0 +1,6 @@
+{
+  "usingComponents":{
+    "pickpanel":"/components/pickpanel/pickpanel"
+  },
+  "pullRefresh":false
+}

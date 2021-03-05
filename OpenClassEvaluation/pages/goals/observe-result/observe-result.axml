@@ -1,0 +1,13 @@
+<view>
+  <header title="{{title}}"/>
+  <view class="container">
+    <view class="pull-left">
+      <view class="table-row">
+
+      </view>
+    </view>
+    <view class="pull-left">
+      
+    </view>
+  </view>
+</view>

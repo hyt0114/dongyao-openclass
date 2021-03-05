@@ -1,0 +1,14 @@
+<view>
+  <header title="{{title}}"></header>
+  <view class="goals">
+    <view class="goal-block" a:for="{{navs}}">
+      <navigator open-type="navigate" url="{{item.link}}" hover-class="navigator-hover" class="block-content">{{item.text}}</navigator>
+    </view>
+  </view>
+  <view class="open-class-infos">
+    <view class="info"><view class="label">执教人</view><view class="content">熊敏</view></view>
+    <view class="info"><view class="label">学校</view><view class="content">东瑶小学</view></view>
+    <view class="info"><view class="label">班级</view><view class="content">一年一班</view></view>
+    <view class="info"><view class="label">时间</view><view class="content">2021-02-02</view></view>
+  </view>
+</view>

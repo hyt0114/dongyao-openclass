@@ -1,0 +1,47 @@
+.question-block{
+  border: 1px solid rgba(25,31,37,.08);
+  border-radius: 5rpx;
+  margin:10rpx 0;
+  position: relative;
+}
+.flex-block{
+  display: flex;
+  line-height: 36rpx;
+}
+.flex-label{
+  background: rgba(25,31,37,.04);
+  padding:3rpx;
+  border-radius: 4rpx;
+  margin:3rpx;
+  width:20%;
+  text-align: left;
+}
+.flex-content{
+  padding:3rpx;
+  margin:3rpx;
+}
+.text-default{
+  color:#3296fa !important;
+}
+
+radio{
+  display: none;
+}
+.question-title-input{
+    color: #409afe;
+    height: 100%;
+    width: 420rpx;
+}
+.required:before{
+  content:"*";
+  color:red;
+}
+.close-btn{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 2rpx;
+  right: 2rpx;
+  background: url('/assets/img/remove.png') no-repeat;
+  background-size:40rpx; 
+}

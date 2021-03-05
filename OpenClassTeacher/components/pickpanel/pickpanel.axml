@@ -1,0 +1,10 @@
+<view class="pick-panel" a:if="{{show}}">
+  <view class="pick-panel-mask" catchTap="hide"></view>
+  <view class="pick-panel-content" animation="{{animationInfo}}">
+    <view class="pick-panel-title">{{title}}
+      <view class="close-btn" catchTap="hide">关闭</view>
+      <view class="sure-btn" catchTap="sure" a:if={{onSure}}>确定</view>
+    </view>
+    <slot></slot>
+  </view>
+</view>

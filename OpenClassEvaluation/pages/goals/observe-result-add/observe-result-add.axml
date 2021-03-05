@@ -1,0 +1,50 @@
+<header title="{{title}}"/>
+  <view class="container">
+    <form >
+      <view class="form-row">
+        <view class="form-row-label">教师提出的问题</view>
+        <view class="form-row-content">
+          <input class="w100"  placeholder="记录教师提出的问题" />
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-row-label">问题的认知水平</view>
+        <view class="form-row-content">
+          <radio-group class="radio-group-in-row" name="level">
+            <label class="radio" a:for="{{levels}}">
+              <radio value="{{item}}"/>
+              <text class="radio-text">{{item}}</text>
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-row-label">指向内部</view>
+        <view class="form-row-content">
+          <checkbox-group name="innerOptions">
+          <label class="checkbox" a:for="{{inner.options}}">
+            <checkbox value="{{item}}"/>
+            <text class="checkbox-text">{{item}}</text>
+          </label>
+        </checkbox-group>
+        </view>
+      </view>
+      <view class="form-row">
+        <view class="form-row-label">指向外部</view>
+        <view class="form-row-content">
+          <checkbox-group name="outterOptions">
+          <label class="checkbox" a:for="{{outter.options}}">
+            <checkbox value="{{item}}"/>
+            <text class="checkbox-text">{{item}}</text>
+          </label>
+        </checkbox-group>
+        </view>
+      </view>
+      <view class="btn-block">
+        <button type="primary" onTap="submitForm">
+        添加
+        </button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+<view>
+  <view class="header">课堂申请</view>
+  <form>
+    <view class="form-row border-b">
+      <view class="form-row-label">座位模式</view>
+      <view class="form-row-content">
+        <picker onChange="bindModeChange" value="{{mode}}" range="{{formOptions.modeOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.modeOptions[mode].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view a:if="{{mode == 0}}">
+      <view class="flex-seats">
+        <view class="standard-group" a:for={{groups}} a:for-item="group" a:for-index="gidx">
+          <view class="count-picker" catchTap="showPickpanelSeats" data-index="{{gidx}}" data-left="{{group.left}}" data-right="{{group.right}}">{{group.left}}-{{group.right}}</view>
+          <view class="big-group">
+            <view class="left-group group-item">
+              <view class="seat" a:for="{{group.left}}" a:for-index="lidx"> </view>
+            </view>
+            <view class="right-group group-item">
+              <view class="seat {{(ridx+1) > group.left ? 'border-left':''}}" a:for="{{group.right}}" a:for-index="ridx" > </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--end of standard seats-->
+    <view a:elif="{{mode == 1}}">
+      <view class="group-seats">
+        <view class="group-name group-item">
+          <view class="leader grid left">组别</view>
+          <view a:for="{{groups}}" class="grid left">{{index+1}}</view>
+        </view>
+        <view class="group-count group-item">
+          <view class="leader grid">人数</view>
+          <view a:for="{{groups}}" class="grid">{{item.count}}</view>
+        </view>
+      </view>
+    </view>
+    <!--end of group seats-->
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">教学活动</view>
+      <view class="form-row-content">
+        <picker onChange="bindEventChange" value="{{eventType}}" range="{{formOptions.eventOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.eventOptions[eventType].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="flex-table">
+      <view class="flex-table-row flex-table-header">
+        <view class="flex-table-column" a:for="{{tableData.headers}}">
+          {{item}}
+        </view>
+      </view>
+      <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
+        <view class="flex-table-column">
+          {{row.title}}
+        </view>
+        <view class="flex-table-column">
+          {{row.value}}
+        </view>
+      </view>
+    </view>
+
+    <view class="btns-block">
+      <view class="btn btn-primary" onTap="submitForm">
+        下一步
+      </view>
+    </view>
+  </form>
+  <pickpanel show="{{showPickpanelSeats}}" onHide="hidePickpanelSeats">
+      <picker-view value="{{editGroup.payload}}" onChange="onSeatPickerChange">
+        <picker-view-column>
+          <view a:for="{{8}}">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view a:for="{{8}}">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+  </pickpanel>
+</view>

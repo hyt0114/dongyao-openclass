@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/myOpenClass/myOpenClass",
+    "pages/classInfo/classInfo"
+  ],
+  "window": {
+    "defaultTitle": "教师课堂"
+  },
+  "tabBar": {
+    "textColor": "#dddddd",
+    "selectedColor": "#49a9ee",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "icon": "assets/img/home-silence.png",
+        "activeIcon": "assets/img/home-active.png",
+        "pagePath": "pages/index/index",
+        "name": "课堂申请"
+      },
+      {
+        "icon": "assets/img/my-silence.png",
+        "activeIcon": "assets/img/my-active.png",
+        "pagePath": "pages/myOpenClass/myOpenClass",
+        "name": "我的课堂"
+      }
+    ]
+  }
+}

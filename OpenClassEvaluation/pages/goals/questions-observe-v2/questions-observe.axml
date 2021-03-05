@@ -1,0 +1,27 @@
+<view>
+  <header title="{{title}}"/>
+  <view class="container">
+    <view class="list-group">
+      <view class="list-group-item" a:for="{{questions}}" onTap="submitForm">
+        <view class="leader">
+          {{item.q}}
+        </view>
+        <view>
+          <text class="badge" a:if="{{item.level.cognition}}">认知</text>
+          <text class="badge badge-warning" a:if="{{item.level.reasoning}}">推理</text>
+          <text class="badge badge-success" a:if="{{item.level.creative}}">创造</text>
+          <text class="badge badge-primary" a:if="{{item.level.manage}}">管理</text>
+          <text class="badge badge-result" a:if="{{item.inner.result}}">获得问题结论</text>
+          <text class="badge badge-think" a:if="{{item.inner.think}}">引发学生思考</text>
+          <text class="badge badge-remind" a:if="{{item.outter.remind}}">提醒</text>
+          <text class="badge badge-inspire" a:if="{{item.outter.inspire}}">激励</text>
+        </view>
+      </view>
+    </view>
+    <view class="btn-block">
+      <button type="primary" onTap="submitForm">
+      添加
+      </button>
+    </view>
+  </view>
+</view>
