@@ -1,5 +1,5 @@
 .goals{
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   padding-left:10rpx;
   padding-right:10rpx;
   display: flex;
@@ -8,7 +8,7 @@
 .goals .goal-block {
   text-align: center;
   flex:1 0 0%;
-  padding:3rpx 5rpx;
+  padding:3rpx 60rpx;
 }
 .goals .goal-block .block-content{
   height:60rpx;
@@ -19,7 +19,7 @@
   font-size: 26rpx;
 }
 .open-class-infos{
-  margin-top:100rpx;
+  margin-top:40rpx;
   text-align: center;
   font-size: 24rpx;
   font-weight: bold;

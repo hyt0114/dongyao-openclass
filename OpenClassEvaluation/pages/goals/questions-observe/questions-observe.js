@@ -26,18 +26,19 @@ Page({
         title: '忘记提交？',
         content: '当前页面内容尚未提交，离开将导致内容丢失，确认离开吗？'
       }
-    }); 
-  },
-  touchMove(e){
-    console.log(e);
+    });
   },
   addQuestion(){
-    let question = {
-      title:"新问题"
-    }
     let length = this.data.questions.length;
+    let question = {
+      title:"新问题" + (length + 1)
+    }
     this.setData({
       ["questions["+length+"]"]:question
+    })
+    dd.pageScrollTo({
+      scrollTop: (166 * (length+1) + 80) * 2,
+      duration:500
     })
   },
   removeQuestion(e){
@@ -51,6 +52,9 @@ Page({
           if(result.confirm){
             this.$spliceData({
               questions:[index,1]
+            })
+            dd.showToast({
+              content:"删除成功"
             })
           }
         },

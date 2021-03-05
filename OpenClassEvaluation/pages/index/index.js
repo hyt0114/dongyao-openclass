@@ -1,24 +1,28 @@
 Page({
   data:{
     title:'平行四边形的面积',
-    navs:[
-      {
-        link:'/pages/goals/student-event/student-event',
-        text:'学生活动'
-      },
-      {
-        link:'/pages/goals/teach-event/teach-event',
-        text:'教学活动'
-      },
-      {
-        link:'/pages/goals/questions-observe/questions-observe',
-        text:'课堂提问'
-      },
-      {
-        link:'/pages/goals/evaluation/evaluation',
-        text:'课堂评价'
-      }
-  ]
+    navs:{
+      top:[
+        {
+          link:'/pages/goals/student-event/student-event',
+          text:'学生活动'
+        },
+        {
+          link:'/pages/goals/teach-event/teach-event',
+          text:'教学活动'
+        }
+      ],
+      bottom:[
+        {
+          link:'/pages/goals/questions-observe/questions-observe',
+          text:'课堂提问'
+        },
+        {
+          link:'/pages/goals/evaluation/evaluation',
+          text:'课堂评价'
+        }
+      ]
+    }
   },
   onLoad(query) {
     // 页面加载

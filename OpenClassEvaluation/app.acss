@@ -2,7 +2,7 @@
 page{
   font-size: 18rpx;
   background-color: #fff;
-  --color-default:rgba(25,31,37,.56);
+  --color-default:rgba(25,31,37,.72);
   --color-primary:#3296fa;
 }
 input{

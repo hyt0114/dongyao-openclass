@@ -45,3 +45,23 @@ radio{
   background: url('/assets/img/remove.png') no-repeat;
   background-size:cover; 
 }
+.flex-slide-btn-block{
+  position: absolute;
+  top:0;
+  right:0;
+  height: 100%;
+  display: flex;
+}
+.flex-slide-btn{
+  width:28rpx;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  padding:0 5rpx;
+  align-items: center;
+  font-size:22rpx;
+   border-radius: 5rpx;
+}
+.flex-slide-btn-block .flex-slide-btn:not(:last-child){
+  border-right:1rpx solid #fff;
+}
