@@ -2,9 +2,9 @@
   <view class="header">课堂申请</view>
   <form>
     <view class="form-row border-b">
-      <view class="form-row-label">课堂主题</view>
+      <view class="form-row-label">课题</view>
       <view class="form-row-content">
-        <input name="subject" class="input" placeholder="请输入课堂主题"  onInput="bindKeyInput" data-key="classTopics"/>
+        <input name="subject" class="input" placeholder="请输入课题"  onInput="bindKeyInput" data-key="classTopics"/>
       </view>
     </view>
     <view class="form-row border-b">

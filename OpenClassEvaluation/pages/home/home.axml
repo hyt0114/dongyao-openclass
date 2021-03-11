@@ -1,0 +1,11 @@
+<view>
+  <header title={{title}}></header>
+  <view class="container">
+    <block a:for="{{list}}">
+      <view class="class-item">
+        <view class="class-title"><text data-class-id="{{item.id}}" onTap="gotoDetail">{{item.classTopics}}</text></view>
+        <view class="class-desc"><text class="desc-item">学校:{{item.classAddr}}</text><text class="desc-item">班级:{{item.classNm}}</text><text class="desc-item">执教人:{{item.teacher}}</text></view>
+      </view>
+    </block>
+  </view>
+</view>

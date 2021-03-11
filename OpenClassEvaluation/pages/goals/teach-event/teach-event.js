@@ -1,36 +1,70 @@
+import {request} from "/utils/api"
 Page({
   data: {
     title:"教学活动观察量表",
     teaching:false,
-    form:{
-      classType:""
-    },
-    infos:{
-      schoolName:"东瑶小学",
-      className:"一年一班",
-      studentCount:60,
-      teacher:"熊敏",
-      recorder:"xxx"
-    },
+    themes:["teach","interactive","cooperation","think"],
     types:[
       {text:"新授课",value:"teach"},
       {text:"练习课",value:"practice"},
       {text:"其他",value:"other",extend:true}
     ],
-    maxTime:1 * 60,//seconds,
-    incrementStep:1*60,
+    maxTime:30 * 60,//seconds,
+    incrementStep:5*60,
     beginClassId:null,
     processSeconds:0,
     lastCalcSeconds:0,
-    progressbars:[
+    progressbars:[/*
       {id:"main",title:'课堂时间进度',progress:0,seconds:0,primary:true,showMinute:"00",showSeconds:"00",lastAddSeconds:0,lastAdd:false},
       {id:"teach",title:'教师讲解',progress:0,seconds:0,showMinute:"00",showSeconds:"00",lastAddSeconds:0,lastAdd:false},
       {id:"interactive",title:'师生交流',progress:0,seconds:0,showMinute:"00",showSeconds:"00",lastAddSeconds:0,lastAdd:false},
       {id:"cooperation",title:'学生合作',progress:0,seconds:0,showMinute:"00",showSeconds:"00",lastAddSeconds:0,lastAdd:false},
       {id:"think",title:'学生独立思考',progress:0,seconds:0,showMinute:"00",showSeconds:"00",lastAddSeconds:0,lastAdd:false}
-    ]
+    */],
+    classInfo:{}
   },
-  onLoad() {
+  onLoad(query) {
+    if(query.classId){
+      this.setData({
+        "classId":query.classId
+      })
+      request("/class/queryDetail",{
+        classId:query.classId
+      }).then(data=>{
+        this.setData({
+          classInfo:data
+        })
+        if(this.data.classInfo.teachingDetail && this.data.classInfo.teachingDetail.trim() != ""){
+          var main = [{id:"main",title:'课堂时间进度',primary:true}];
+          let progressBars = JSON.parse(this.data.classInfo.teachingDetail);
+          if(progressBars && progressBars.length){
+            progressBars = main.concat(progressBars);
+            progressBars.forEach(p=>{
+              p.progress = 0;
+              p.seconds = 0;
+              p.showMinute = "00";
+              p.showSeconds = "00";
+              p.lastAddSeconds = 0;
+              p.lastAdd = false;
+            });
+            this.setData({
+              "progressbars":progressBars
+            })
+          }
+        }
+        
+      }).catch(err=>{
+        console.error(err);
+      })
+    }else{
+      dd.alert({
+        content:"发生错误",
+        buttonText:"确定",
+        success:()=>{
+          dd.navigateBack();
+        }
+      })
+    }
     dd.enableLeaveConfirm({
       effect: ['back', 'close'],
       info: {

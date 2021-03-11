@@ -1,32 +1,35 @@
 <view>
-  <header title={{title}}></header>
+  <header title={{classInfo.classTopic}}></header>
   <view class="container">
     <view>
-      <text class="info-item"><text class="label">学校</text>{{infos.schoolName}}</text>
-      <text class="info-item"><text class="label">班级</text>{{infos.className}}</text>
-      <text class="info-item"><text class="label">学生总数</text>{{infos.studentCount}}</text>
-      <text class="info-item"><text class="label">执教人</text>{{infos.teacher}}</text>
+      <text class="info-item"><text class="label">学校</text>{{classInfo.schoolNm}}</text>
+      <text class="info-item"><text class="label">班级</text>{{classInfo.classNn}}</text>
+      <text class="info-item"><text class="label">学生总数</text>{{classInfo.studentNum}}</text>
+      <text class="info-item"><text class="label">执教人</text>{{classInfo.teacher}}</text>
+      
+    </view>
+    <view>
       <text class="info-item"><text class="label">记录人</text><input class="input-bb input-long" maxlength="10"/></text>
     </view>
     <view>
       <view class="teacher-desktop">讲台</div>
     </view>
-    <view a:if="{{infos.seats.standard}}" class="standard-seats-block">
-      <view a:for="{{infos.seats.standard}}" class="big-group-wrapper" a:for-item="group">
+    <view a:if="{{classInfo.seatModel == 0}}" class="standard-seats-block">
+      <view a:for="{{classInfo.seatDetail}}" class="big-group-wrapper" a:for-item="group" a:for-index="gidx">
         <view class="big-group">
           <view class="group left">
-            <view class="group-seat" a:for="{{group.left.count}}" a:for-item="seat">{{group.left.groupId}}-{{seat}}</view>
+            <view class="group-seat" a:for="{{group.left}}" a:for-item="seat">{{gidx}}-{{seat}}</view>
           </view>
           <view class="group right">
-            <view class="group-seat" a:for="{{group.right.count}}" a:for-item="seat">{{group.right.groupId}}-{{seat}}</view>
+            <view class="group-seat" a:for="{{group.right}}" a:for-item="seat">{{gidx}}-{{seat}}</view>
           </view>
         </view>
       </view>
     </view>
-    <view a:if="{{infos.seats.group}}" class="group-seats-block">
-      <view a:for="{{infos.seats.group}}" a:for-index="gidx" a:for-item="lineGroup" class="line-group">
-        <view class="line-seat">{{lineGroup.groupName}}</view>
-        <view a:for="{{lineGroup.count}}" a:for-index="idx" class="line-seat" onTap="showPopDetail" data-group="{{gidx+1}}" data-seat="{{idx+1}}">
+    <view a:if="{{classInfo.seatModel == 1}}" class="group-seats-block">
+      <view a:for="{{classInfo.seatDetail}}" a:for-index="gidx" a:for-item="lineGroup" class="line-group">
+        <view class="line-seat">第{{gidx+1}}组</view>
+        <view a:for="{{lineGroup}}" a:for-index="idx" class="line-seat" onTap="showPopDetail" data-group="{{gidx+1}}" data-seat="{{idx+1}}">
           {{gidx+1}}-{{idx+1}}
           <view class="eva-data-block">
             <image class="mini-image" a:for="{{answerData[(gidx+1)+''+(idx+1)].correct}}" src="/assets/img/check-success.png"/>

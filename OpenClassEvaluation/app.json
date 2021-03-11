@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
     "pages/goals/student-event/student-event",
     "pages/goals/teach-event/teach-event",

@@ -2,9 +2,9 @@
   <header title="{{title}}"/>
   <view class="container">
     <view class="leader-row">
-      <text class="info-item"><text class="label">学校</text>{{infos.schoolName}}</text>
-      <text class="info-item"><text class="label">班级</text>{{infos.className}}</text>
-      <text class="info-item"><text class="label">学生总数</text>{{infos.studentCount}}</text>
+      <text class="info-item"><text class="label">学校</text>{{classInfo.schoolNm}}</text>
+      <text class="info-item"><text class="label">班级</text>{{classInfo.classNm}}</text>
+      <text class="info-item"><text class="label">学生总数</text>{{classInfo.studentNum}}</text>
     </view>
     <view class="leader-row">
       <text class="info-item">
@@ -28,7 +28,7 @@
     </view>
     <view class="leader-row">
       <text class="info-item">
-        <text class="label">执教人</text>{{infos.teacher}}
+        <text class="label">执教人</text>{{classInfo.teacher}}
       </text>
       <text class="info-item">
         <text class="label">记录人</text><input class="input-bb input-long" maxlength="10"/>
@@ -37,12 +37,12 @@
      <view class="progress-block">
         <view class="progress-bar" a:for="{{progressbars}}">
           <view class="progress-title">{{item.title}}</view>
-          <view class="progress" onTap="record" data-key="{{item.id}}">
+          <view class="progress " onTap="record" data-key="{{item.id}}">
             <view class="outter">
-              <view class="inner {{item.id}}" style="width:{{item.progress}}%;"></view>
+              <view class="inner {{item.primary ? 'main' : themes[index%themes.length]}}" style="width:{{item.progress}}%;"></view>
             </view>
           </view>
-          <view class="progress-time {{item.id}}">{{item.showMinute}}:{{item.showSeconds}}</view>
+          <view class="progress-time {{item.primary ? 'main' : themes[index%themes.length]}}">{{item.showMinute}}:{{item.showSeconds}}</view>
           <view class="progress-btn">
             <view class="btn btn-primary btn-mini"  a:if="{{item.primary && !teaching}}" onTap="startClass">{{item.progress? '继续':'开始'}}</view>
             <view class="btn btn-danger btn-mini"  a:if="{{item.primary && teaching}}" onTap="pauseClass">暂停</view>

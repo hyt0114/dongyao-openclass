@@ -17,9 +17,15 @@ Page({
     ],
     questions:[
       
-    ]
+    ],
+    classId:0
   },
-  onLoad() {
+  onLoad(query) {
+    if(query.classId){
+      this.setData({
+        "classId":query.classId
+      })
+    }
     dd.enableLeaveConfirm({
       effect: ['back', 'close'],
       info: {

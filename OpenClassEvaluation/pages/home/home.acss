@@ -1,0 +1,17 @@
+.class-item{
+  color:var(--color-default);
+  border-bottom: 1px dotted var(--color-default);
+  padding:6rpx 10rpx;
+}
+.class-title{
+  font-size:20rpx;
+  color:var(--color-primary);
+}
+.class-desc{
+  margin-top:6rpx;
+  font-size:14rpx;
+  color:rgba(25,31,37,56%);
+}
+.desc-item{
+  margin-right:10rpx;
+}

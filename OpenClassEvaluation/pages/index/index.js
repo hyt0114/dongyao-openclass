@@ -1,42 +1,54 @@
+import {request} from "/utils/api"
 Page({
   data:{
-    title:'平行四边形的面积',
     navs:{
       top:[
         {
-          link:'/pages/goals/student-event/student-event',
+          link:'/pages/goals/student-event/student-event?classId=',
           text:'学生活动'
         },
         {
-          link:'/pages/goals/teach-event/teach-event',
+          link:'/pages/goals/teach-event/teach-event?classId=',
           text:'教学活动'
         }
       ],
       bottom:[
         {
-          link:'/pages/goals/questions-observe/questions-observe',
+          link:'/pages/goals/questions-observe/questions-observe?classId=',
           text:'课堂提问'
         },
         {
-          link:'/pages/goals/evaluation/evaluation',
+          link:'/pages/goals/evaluation/evaluation?classId=',
           text:'课堂评价'
         }
       ]
-    }
+    },
+    classId:0,
+    classInfo:{}
   },
   onLoad(query) {
-    // 页面加载
-    //console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
-    // dd.getAuthCode({
-    //   success:function(res){
-    //     /*{
-    //         authCode: 'hYLK98jkf0m' //string authCode
-    //     }*/
-    //     console.log("res:",res)
-    //   },
-    //   fail:function(err){
-    //   }
-    // });
+    if(query.classId){
+      this.setData({
+        "classId":query.classId
+      })
+      request("/class/queryDetail",{
+        classId:query.classId
+      }).then(data=>{
+        this.setData({
+          classInfo:data
+        })
+      }).catch(err=>{
+        console.error(err);
+      })
+    }else{
+      dd.alert({
+        content:"发生错误",
+        buttonText:"确定",
+        success:()=>{
+          dd.navigateBack();
+        }
+      })
+    }
   },
   onReady() {
     // 页面加载完成

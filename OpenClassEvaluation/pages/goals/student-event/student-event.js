@@ -1,46 +1,7 @@
+import {request} from "/utils/api"
 Page({
   data: {
-    title:"学生活动观察量表",
-    infos:{
-      schoolName:"东瑶小学",
-      className:"一年一班",
-      studentCount:60,
-      teacher:"熊敏",
-      recorder:"xxx",
-      seats:{
-        /*standard:[
-            {left:{groupId:1,count:8},right:{groupId:2,count:8}},
-            {left:{groupId:1,count:8},right:{groupId:2,count:8}},
-            {left:{groupId:1,count:8},right:{groupId:2,count:8}},
-            {left:{groupId:1,count:8},right:{groupId:2,count:8}}
-        ]*/
-        group:[
-          {
-            groupName:"第1组",
-            count:7
-          },
-          {
-            groupName:"第2组",
-            count:7
-          },
-          {
-            groupName:"第3组",
-            count:7
-          },
-          {
-            groupName:"第4组",
-            count:7
-          },
-          {
-            groupName:"第5组",
-            count:7
-          },
-          {
-            groupName:"第6组",
-            count:7
-          }
-        ]
-      }
+    classInfo:{
     },
     showPopDetail:false,
     currentGroup:0,
@@ -79,7 +40,34 @@ Page({
     ],
     tempDetail:[]
   },
-  onLoad() {
+  onLoad(query) {
+    if(query.classId){
+      this.setData({
+        "classId":query.classId
+      })
+      request("/class/queryDetail",{
+        classId:query.classId
+      }).then(data=>{
+        this.setData({
+          classInfo:data
+        })
+        if(this.data.classInfo.seatDetail && this.data.classInfo.seatDetail.trim() != ""){
+          this.setData({
+            "classInfo.seatDetail":JSON.parse(this.data.classInfo.seatDetail)
+          })
+        }
+      }).catch(err=>{
+        console.error(err);
+      })
+    }else{
+      dd.alert({
+        content:"发生错误",
+        buttonText:"确定",
+        success:()=>{
+          dd.navigateBack();
+        }
+      })
+    }
     dd.enableLeaveConfirm({
       effect: ['back', 'close'],
       info: {
