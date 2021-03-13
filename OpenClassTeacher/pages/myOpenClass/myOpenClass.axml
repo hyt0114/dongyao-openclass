@@ -6,13 +6,13 @@
     <view class="form-row">
       <view class="form-row-label">开始日期</view>
       <view class="form-row-content">
-        <view class="form-picker" onTap="showDatePicker" data-item="beginTime">{{form.beginTime}}</view>
+        <view class="form-picker" onTap="showDatePicker" data-item="beginDate">{{beginDate}}</view>
       </view>
     </view>
     <view class="form-row">
       <view class="form-row-label">结束日期</view>
       <view class="form-row-content">
-        <view class="form-picker" onTap="showDatePicker" data-item="endTime">{{form.endTime}}</view>
+        <view class="form-picker" onTap="showDatePicker" data-item="endDate">{{endDate}}</view>
       </view>
     </view>
     <view class="form-row border-b">
@@ -23,13 +23,16 @@
         </picker>
       </view>
     </view>
+    <view class="text-center">
+      <view class="btn btn-success mt-20" onTap="doSearch"><icon type="search" size="16" class="me-20" color="#fff" />搜索</view>
+    </view>
     <view class="flex-table">
       <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
         <view class="flex-table-column flex-table-column-2" >
           <view class="text-start ps-10">{{row.classTopics}}</view>
         </view>
         <view class="flex-table-column">
-          <view class="btn btn-success btn-sm" data-class-id="{{row.id}}" onTap="showClassInfo">
+          <view class="btn btn-primary btn-sm" data-class-id="{{row.id}}" onTap="showClassInfo">
             详情
           </view>
         </view>

@@ -1,10 +1,8 @@
 import {request} from '../../utils/api'
 Page({
   data: {
-    form:{
-      beginTime:"",
-      endTime:""
-    },
+    beginDate:"",
+    endDate:"",
     pageSize:10,
     pageNum:1,
     statusOptions:["已开课","未开课"],
@@ -92,7 +90,7 @@ Page({
       format: 'yyyy-MM-dd',
       success: (res) => {
         this.setData({
-          ["form."+key]:res.date
+          [key]:res.date
         })
       },
     });
@@ -101,6 +99,26 @@ Page({
     this.setData({
       "statusIndex":e.detail.value
     })
+  },
+  doSearch(){
+    this.setData({
+      pageNum :1
+    });
+    request("/class/queryClassList",{
+        beginDate:this.data.beginDate + " 00:00:00",
+        endDate:this.data.endDate + " 23:59:59",
+        //teacherUserId:userInfo.userid,
+        "pageSize":this.data.pageSize,
+        "pageNum":this.data.pageNum
+      }).then(data=>{
+        if(data){
+          this.setData({
+            "tableData.data":data
+          });
+        }
+      }).catch(err=>{
+        console.log(err)
+      });
   },
   /*申请详情 */
   showClassInfo(e){

@@ -4,7 +4,7 @@
     <view class="form-row border-b">
       <view class="form-row-label">课题</view>
       <view class="form-row-content">
-        <input name="subject" class="input" placeholder="请输入课题"  onInput="bindKeyInput" data-key="classTopics"/>
+        <input class="input" placeholder="请输入课题"  onInput="bindKeyInput" data-key="classTopics"/>
       </view>
     </view>
     <view class="form-row border-b">
@@ -46,6 +46,20 @@
         <picker value="{{addrIndex}}" range="{{addrs}}">
           <view class="form-picker">{{addrs[addrIndex]}}</view>
         </picker>
+      </view>
+    </view>
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">课型</view>
+      <view class="form-row-content">
+        <picker onChange="bindClassTypeChange" value="{{form.classType}}" range="{{formOptions.classTypeOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.classTypeOptions[form.classType].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">教学内容</view>
+      <view class="form-row-content">
+        <input class="input" placeholder="请输入教学内容"  onInput="bindKeyInput" data-key="teachingInfo"/>
       </view>
     </view>
     <!--page one end-->
@@ -138,6 +152,39 @@
         +
       </view>
     </view>
+    <!--end of teaching event-->
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">学生活动</view>
+      <view class="form-row-content">
+        <picker onChange="bindActivityChange" value="{{activityType}}" range="{{formOptions.activityOptions}}" range-key="text">
+          <view class="form-picker">{{formOptions.activityOptions[activityType].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="flex-table">
+      <view class="flex-table-row flex-table-header">
+        <view class="flex-table-column text-start" a:for="{{activityData.headers}}">
+          {{item}}
+        </view>
+        <view class="flex-table-column flex-table-column-half" a:if="{{activityType == 1}}">操作</view>
+      </view>
+      <view class="flex-table-row" a:for="{{activityData.data}}" a:for-item="row">
+        <view class="flex-table-column text-start">
+          {{row.title}}
+        </view>
+        <view class="flex-table-column text-start">
+          {{row.value}}
+        </view>
+        <view class="flex-table-column flex-table-column-half text-light bg-danger" a:if="{{activityType == 1}}" onTap="removeOneActivity" data-index="{{index}}">
+          删除
+        </view>
+      </view>
+    </view>
+    <view class="btns-block">
+      <view class="btn btn-sm btn-success" a:if="{{activityType == 1}}" onTap="showAddPanelActivity">
+        +
+      </view>
+    </view>
     <view class="btns-block">
       <view class="btn btn-primary" onTap="submitForm">
         提交
@@ -156,6 +203,20 @@
   </picker-view>
 </pickpanel>
 <pickpanel show="{{showAddPanelEvent}}" onHide="hideAddPanelEvent" onSure="doAddTeachEvent">
+  <view class="form-row border-b">
+    <view class="form-row-label">活动类型</view>
+    <view class="form-row-content">
+      <input class="input" placeholder="活动类型"  onInput="bindAddKeyInput" data-key="addTitle"/>
+    </view>
+  </view>
+  <view class="form-row border-b">
+    <view class="form-row-label">评分标准</view>
+    <view class="form-row-content">
+      <input type="number" class="input" placeholder="评分标准"  onInput="bindAddKeyInput" data-key="addValue"/>
+    </view>
+  </view>
+</pickpanel>
+<pickpanel show="{{showAddPanelActivity}}" onHide="hideAddPanelActivity" onSure="doAddStudentActivity">
   <view class="form-row border-b">
     <view class="form-row-label">活动类型</view>
     <view class="form-row-content">

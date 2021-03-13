@@ -7,6 +7,10 @@ Page({
       headers:["活动类型","评分标准（时间：分）"],
       data:[]
     },
+    activityData:{
+      headers:["活动类型","评分标准（时间：分）"],
+      data:[]
+    },
     formOptions:{
       modeOptions:[
         {text:"标准",value:"standard"},
@@ -15,6 +19,15 @@ Page({
       eventOptions:[
         {text:"标准",value:"standard"},
         {text:"自定义",value:"custom"}
+      ],
+      activityOptions:[
+        {text:"标准",value:"standard"},
+        {text:"自定义",value:"custom"}
+      ],
+      classTypeOptions:[
+        {text:"新授课",value:"teach"},
+        {text:"练习课",value:"practice"},
+        {text:"其他",value:"other"}
       ]
     }
   },
@@ -34,6 +47,12 @@ Page({
         this.setData({
           "classInfo.teachingDetail":JSON.parse(this.data.classInfo.teachingDetail),
           "tableData.data":JSON.parse(this.data.classInfo.teachingDetail)
+        })
+      }
+      if(this.data.classInfo.studentActivitiesDetail && this.data.classInfo.studentActivitiesDetail.trim() != ""){
+        this.setData({
+          "classInfo.studentActivitiesDetail":JSON.parse(this.data.classInfo.studentActivitiesDetail),
+          "activityData.data":JSON.parse(this.data.classInfo.studentActivitiesDetail)
         })
       }
     }).catch(err=>{

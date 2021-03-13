@@ -2,7 +2,7 @@
   <view class="header">课堂申请详情</view>
   <form>
     <view class="form-row border-b">
-      <view class="form-row-label">课堂主题</view>
+      <view class="form-row-label">课题</view>
       <view class="form-row-content">
         <text>{{classInfo.classTopic}}</text> 
       </view>
@@ -42,6 +42,18 @@
       <view class="form-row-label">开课地点</view>
       <view class="form-row-content">
         <text>{{classInfo.classAddr}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">课型</view>
+      <view class="form-row-content">
+        <text>{{formOptions.classTypeOptions[classInfo.classType].text}}</text>
+      </view>
+    </view>
+    <view class="form-row border-b">
+      <view class="form-row-label">教学内容</view>
+      <view class="form-row-content">
+        <text>{{classInfo.teachingInfo}}</text>
       </view>
     </view>
     <!--page one end-->
@@ -96,15 +108,37 @@
     </view>
     <view class="flex-table">
       <view class="flex-table-row flex-table-header">
-        <view class="flex-table-column" a:for="{{tableData.headers}}">
+        <view class="flex-table-column text-start" a:for="{{tableData.headers}}">
           {{item}}
         </view>
       </view>
       <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
-        <view class="flex-table-column">
+        <view class="flex-table-column text-start">
           {{row.title}}
         </view>
-        <view class="flex-table-column">
+        <view class="flex-table-column text-start">
+          {{row.value}}
+        </view>
+      </view>
+    </view>
+    <!--end of teaching event-->
+    <view class="form-row border-b mt-20">
+      <view class="form-row-label">学生活动</view>
+      <view class="form-row-content">
+         <text>{{formOptions.activityOptions[classInfo.studentActivitiesModel].text}}</text>
+      </view>
+    </view>
+    <view class="flex-table">
+      <view class="flex-table-row flex-table-header">
+        <view class="flex-table-column text-start" a:for="{{activityData.headers}}">
+          {{item}}
+        </view>
+      </view>
+      <view class="flex-table-row" a:for="{{activityData.data}}" a:for-item="row">
+        <view class="flex-table-column text-start">
+          {{row.title}}
+        </view>
+        <view class="flex-table-column text-start">
           {{row.value}}
         </view>
       </view>

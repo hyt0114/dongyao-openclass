@@ -14,10 +14,13 @@ Page({
       teacher:"",
       teacherUserId:"",
       classTime:"",
-      classAddr:"东瑶小学"
+      classAddr:"东瑶小学",
+      classType:0,
+      teachingInfo:""
     },
     mode:0,
     eventType:0,
+    activityType:0,
     formOptions:{
       modeOptions:[
         {text:"标准",value:"standard"},
@@ -27,10 +30,20 @@ Page({
         {text:"标准",value:"standard"},
         {text:"自定义",value:"custom"}
       ],
+      activityOptions:[
+        {text:"标准",value:"standard"},
+        {text:"自定义",value:"custom"}
+      ],
+      classTypeOptions:[
+        {text:"新授课",value:"teach"},
+        {text:"练习课",value:"practice"},
+        {text:"其他",value:"other"}
+      ],
       teacherClasses:[]
     },
     showPickpanelSeats:false,
     showAddPanelEvent:false,
+    showAddPanelActivity:false,
     groups:[
       {
         left:8,
@@ -61,7 +74,17 @@ Page({
         {title:"学生合作",value:"10"},
         {title:"学生独立思考",value:"10"}
     ],
+    defaultActivityData:[
+        {title:"回答正确",value:"10"},
+        {title:"回答错误",value:"10"},
+        {title:"核心问题",value:"10"},
+        {title:"提出质疑",value:"10"}
+    ],
     tableData:{
+      headers:["活动类型","评分标准(时间:分)"],
+      data:[]
+    },
+    activityData:{
       headers:["活动类型","评分标准(时间:分)"],
       data:[]
     },
@@ -75,7 +98,11 @@ Page({
         "tableData.data":this.data.defaultEventData
       })
     }
-    
+    if(this.data.activityType == 0){
+      this.setData({
+        "activityData.data":this.data.defaultActivityData
+      })
+    }
     //dd.removeStorageSync({key:"userInfo"})
     let userInfo = dd.getStorageSync({key:"userInfo"}).data;
     //console.log(userInfo)
@@ -126,7 +153,8 @@ Page({
       }).then(data=>{
         if(data){
           this.setData({
-            "formOptions.teacherClasses":data
+            "formOptions.teacherClasses":data,
+            "form.classNm":data[this.data.classIndex].className
           })
         }
       }).catch(err=>{
@@ -211,6 +239,21 @@ Page({
       ["form."+key]:e.detail.value
     })
   },
+  bindActivityChange(e){
+    let data = [];
+    if(e.detail.value == 0){
+      data = this.data.defaultActivityData;
+    }
+    this.setData({
+      "activityType":e.detail.value,
+      "activityData.data":data
+    });
+  },
+  bindClassTypeChange(e){
+    this.setData({
+      "form.classType":e.detail.value
+    });
+  },
   bindChangeClassName(e){
     let index = e.detail.value;
     this.setData({
@@ -243,6 +286,16 @@ Page({
       "showAddPanelEvent":false
     });
   },
+  showAddPanelActivity(){
+    this.setData({
+      "showAddPanelActivity":true
+    });
+  },
+  hideAddPanelActivity(){
+    this.setData({
+      "showAddPanelActivity":false
+    });
+  },
   onSeatPickerChange(e){
     let left = e.detail.value[0] + 1;
     let right = e.detail.value[1] + 1;
@@ -271,9 +324,34 @@ Page({
     })
     this.hideAddPanelEvent();
   },
+  doAddStudentActivity(){
+    if(!this.data.addTitle){
+      return dd.showToast({
+        content:"请输入活动类型"
+      });
+    }
+    if(!this.data.addValue){
+      return dd.showToast({
+        content:"请输入评分标准"
+      });
+    }
+    let eventObj = {
+      title:this.data.addTitle,
+      value:this.data.addValue
+    };
+    let len = this.data.activityData.data.length
+    this.setData({
+      ["activityData.data["+len+"]"]:eventObj
+    })
+    this.hideAddPanelActivity();
+  },
   removeOneEvent(e){
     let index = e.target.dataset.index;
     this.$spliceData({"tableData.data":[index,1]});
+  },
+  removeOneActivity(e){
+    let index = e.target.dataset.index;
+    this.$spliceData({"activityData.data":[index,1]});
   },
   bindAddKeyInput(e){
     let key = e.target.dataset.key;
@@ -292,7 +370,6 @@ Page({
     this.setData({
       ["lineGroups["+len+"]"]:10
     })
-    console.log(this.data.lineGroups)
   },
   removeOneGroup(e){
     let index = e.target.dataset.index;
@@ -321,7 +398,9 @@ Page({
           seatModel:this.data.mode,
           seatDetail:this.data.mode == 0 ? JSON.stringify(this.data.groups) : JSON.stringify(this.data.lineGroups),
           teachingModel:this.data.eventType,
-          teachingDetail:JSON.stringify(this.data.tableData.data)
+          teachingDetail:JSON.stringify(this.data.tableData.data),
+          studentActivitiesModel:this.data.activityType,
+          studentActivitiesDetail:JSON.stringify(this.data.activityData.data),
         }).then(()=>{
           dd.switchTab({url:"/pages/myOpenClass/myOpenClass"});
         }).catch(err=>{
