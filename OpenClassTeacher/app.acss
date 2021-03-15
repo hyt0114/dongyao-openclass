@@ -4,6 +4,8 @@ page{
   padding:20rpx 20rpx 60rpx 20rpx;
   font-size: 34rpx;
   color:rgba(25,31,37,.72);
+  --color-default:rgba(25,31,37,.72);
+  --color-muted:rgba(25,31,37,.56);
 }
 .header{
   font-size: 50rpx;

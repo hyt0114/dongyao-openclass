@@ -18,10 +18,22 @@
       <view a:for="{{classInfo.seatDetail}}" class="big-group-wrapper" a:for-item="group" a:for-index="gidx">
         <view class="big-group">
           <view class="group left">
-            <view class="group-seat" a:for="{{group.left}}" a:for-item="seat">{{gidx}}-{{seat}}</view>
+            <view class="group-seat" a:for="{{group.left}}" a:for-item="seat" onTap="showPopDetail" data-group="{{gidx}}-left" data-seat="{{seat}}">
+              <view>1-{{seat}}</view>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-left'+(seat)].correct}}" src="/assets/img/check-success.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-left'+(seat)].core}}" src="/assets/img/stars.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-left'+(seat)].doubt}}" src="/assets/img/question.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-left'+(seat)].error}}" src="/assets/img/error.png"/>
+            </view>
           </view>
           <view class="group right">
-            <view class="group-seat" a:for="{{group.right}}" a:for-item="seat">{{gidx}}-{{seat}}</view>
+            <view class="group-seat" a:for="{{group.right}}" a:for-item="seat"  onTap="showPopDetail" data-group="{{gidx}}-right" data-seat="{{seat}}">
+              <view>2-{{seat}}</view>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-right'+(seat)].correct}}" src="/assets/img/check-success.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-right'+(seat)].core}}" src="/assets/img/stars.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-right'+(seat)].doubt}}" src="/assets/img/question.png"/>
+              <image class="mini-image" a:for="{{answerData[(gidx)+'-right'+(seat)].error}}" src="/assets/img/error.png"/>
+            </view>
           </view>
         </view>
       </view>

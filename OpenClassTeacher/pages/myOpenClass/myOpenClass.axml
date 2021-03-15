@@ -24,19 +24,19 @@
       </view>
     </view>
     <view class="text-center">
-      <view class="btn btn-success mt-20" onTap="doSearch"><icon type="search" size="16" class="me-20" color="#fff" />搜索</view>
+      <view class="btn btn-success mt-20 mb-10" onTap="doSearch"><icon type="search" size="16" class="me-20" color="#fff" />搜索</view>
     </view>
     <view class="flex-table">
-      <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row">
-        <view class="flex-table-column flex-table-column-2" >
+      <view class="flex-table-row" a:for="{{tableData.data}}" a:for-item="row" key="{{index}}">
+        <view class="flex-table-column flex-table-column-2 pt-20 pb-20" >
           <view class="text-start ps-10">{{row.classTopics}}</view>
         </view>
-        <view class="flex-table-column">
+        <view class="flex-table-column pt-20 pb-20">
           <view class="btn btn-primary btn-sm" data-class-id="{{row.id}}" onTap="showClassInfo">
             详情
           </view>
         </view>
-        <view class="flex-table-column" >
+        <view class="flex-table-column pt-20 pb-20" >
           <view class="btn btn-default btn-sm" data-class-id="{{row.id}}">
             查看报告
           </view>

@@ -37,7 +37,7 @@ Page({
   addQuestion(){
     let length = this.data.questions.length;
     let question = {
-      title:"新问题" + (length + 1)
+      palceholder:"新问题" + (length + 1)
     }
     this.setData({
       ["questions["+length+"]"]:question
@@ -83,9 +83,7 @@ Page({
       if(!q.title 
          || !q.level 
          || !q.inner
-         || !q.inner.length
-         || !q.outter
-         || !q.outter.length){
+         || !q.outter){
         return false;
       }
       return true;

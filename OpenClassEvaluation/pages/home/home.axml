@@ -1,11 +1,32 @@
 <view>
   <header title={{title}}></header>
   <view class="container">
+    <view class="search-block">
+      <view>开始日期:</view>
+      <view class="search-picker" onTap="showDatePicker" data-item="beginDate">{{beginDate}}</view>
+      <view>结束日期:</view>
+      <view class="search-picker" onTap="showDatePicker" data-item="endDate">{{endDate}}</view>
+      <view class="btn btn-primary btn-sm ms-10" onTap="doSearch"><icon type="search" size="20" class="me-10" color="#fff" />搜索</view>
+    </view>
+    
     <block a:for="{{list}}">
       <view class="class-item">
-        <view class="class-title"><text data-class-id="{{item.id}}" onTap="gotoDetail">{{item.classTopics}}</text></view>
-        <view class="class-desc"><text class="desc-item">学校:{{item.classAddr}}</text><text class="desc-item">班级:{{item.classNm}}</text><text class="desc-item">执教人:{{item.teacher}}</text></view>
+        <view class="class-info">
+          <view class="class-title"><text>{{item.classTopics}}</text></view>
+          <view class="class-desc">
+            <text class="desc-item">学校:{{item.classAddr}}</text>
+            <text class="desc-item">班级:{{item.classNm}}</text>
+            <text class="desc-item">执教人:{{item.teacher}}</text>
+            <text class="desc-item">开课时间:{{item.classTime}}</text>
+          </view>
+        </view>
+        <view class="class-act-block">
+          <view class="btn-square" data-class-id="{{item.id}}" onTap="gotoDetail"></view>
+        </view>
       </view>
     </block>
+    <view class="text-muted text-center mt-20 mb-20" a:if="{{complete}}">
+      没有更多数据了
+    </view>
   </view>
 </view>

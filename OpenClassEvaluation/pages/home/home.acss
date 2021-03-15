@@ -1,7 +1,11 @@
 .class-item{
   color:var(--color-default);
   border-bottom: 1px dotted var(--color-default);
-  padding:6rpx 10rpx;
+  display: flex;
+}
+.class-info{
+  flex:1;
+  padding:10rpx 0;
 }
 .class-title{
   font-size:20rpx;
@@ -14,4 +18,33 @@
 }
 .desc-item{
   margin-right:10rpx;
+}
+.class-act-block{
+  width:40rpx;
+  display: flex;
+  align-items: center;
+}
+.btn-square{
+  width:32rpx;
+  height:32rpx;
+  background:url(/assets/img/enter.png) no-repeat;
+  background-size:32rpx;
+  border-radius: 50%;
+}
+.text-muted{
+  color:rgba(25,31,37,.56);
+}
+.search-block{
+  display: flex;
+}
+.search-picker{
+  min-width: 120rpx;
+  padding-right:40rpx;
+  background: url(/assets/img/down.png) no-repeat;
+  background-size:20rpx;
+  background-position: 95% 50%;
+}
+.search-block .btn-sm{
+  width:80rpx;
+  padding:5rpx;
 }

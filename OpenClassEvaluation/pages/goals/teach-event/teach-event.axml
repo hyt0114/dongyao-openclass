@@ -1,4 +1,4 @@
-<view>
+
   <header title="{{title}}"/>
   <view class="container">
     <view class="leader-row">
@@ -57,4 +57,3 @@
         </button>
       </view>
   </view>
-</view>

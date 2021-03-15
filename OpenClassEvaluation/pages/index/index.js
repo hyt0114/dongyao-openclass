@@ -70,6 +70,7 @@ Page({
   },
   onReachBottom() {
     // 页面被拉到底部
+    console.log("bt")
   },
   onShareAppMessage() {
     // 返回自定义分享信息

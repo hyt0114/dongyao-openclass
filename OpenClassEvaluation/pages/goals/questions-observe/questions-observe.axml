@@ -6,7 +6,7 @@
         <view class="flex-block">
           <view class="flex-label required">教师提出的问题</view>
           <view class="flex-content">
-            <input class="question-title-input" onInput="bindQuestionValue" value="{{question.title}}" data-key="title" data-index="{{index}}">
+            <input class="question-title-input" onInput="bindQuestionValue" value="{{question.title}}" placeholder="{{question.palceholder}}" data-key="title" data-index="{{index}}">
           </view>
         </view>
         <view class="flex-block">
@@ -23,23 +23,23 @@
         <view class="flex-block">
           <view class="flex-label required">指向内部</view>
           <view class="flex-content">
-            <checkbox-group name="innerResult-{{qi}}" class="{{question.inner.includes(item.value) ? 'checked':''}}" onChange="bindQuestionValue" data-key="inner" data-index="{{index}}">
-              <label class="checkbox {{question.inner.includes(item.value) ? 'checked':''}}" a:for="{{innerOptions}}" key="label-{{index}}">
-                <checkbox value="{{item.value}}" checked="{{question.inner.includes(item.value)}}"/>
-                <text class="checkbox-text">{{item.name}}</text>
+            <radio-group class="radio-group" name="innerResult-{{qi}}" onChange="bindQuestionValue" data-key="inner" data-index="{{index}}">
+              <label class="radio {{question.inner == item.value ? 'checked':''}}" a:for="{{innerOptions}}" key="label-{{index}}">
+                <radio value="{{item.value}}" checked="{{question.inner == item.value}}"/>
+                <text class="radio-text">{{item.name}}</text>
               </label>
-            </checkbox-group>
+            </radio-group>
           </view>
         </view>
         <view class="flex-block">
           <view class="flex-label required">指向外部</view>
           <view class="flex-content">
-            <checkbox-group name="innerResult-{{qi}}" onChange="bindQuestionValue" data-key="outter" data-index="{{index}}">
-              <label class="checkbox {{question.outter.includes(item.value) ? 'checked':''}}" a:for="{{outterOptions}}" key="label-{{index}}">
-                <checkbox value="{{item.value}}" checked="{{question.outter.includes(item.value)}}"/>
-                <text class="checkbox-text">{{item.name}}</text>
+            <radio-group class="radio-group" name="outterResult-{{qi}}" onChange="bindQuestionValue" data-key="outter" data-index="{{index}}">
+              <label class="radio {{question.outter == item.value ? 'checked':''}}" a:for="{{innerOptions}}" key="label-{{index}}">
+                <radio value="{{item.value}}" checked="{{question.outter == item.value}}"/>
+                <text class="radio-text">{{item.name}}</text>
               </label>
-            </checkbox-group>
+            </radio-group>
           </view>
         </view>
       </view>

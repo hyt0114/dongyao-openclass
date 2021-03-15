@@ -30,9 +30,9 @@
   flex-direction: column;
 }
 .standard-seats-block .big-group-wrapper > .big-group > .group > .group-seat{
-  height:20rpx;
+  height:32rpx;
   font-size: 12rpx;
-  line-height: 20rpx;
+  line-height: 10rpx;
   text-align: center;
   border:1rpx solid #000;
 }
@@ -48,9 +48,9 @@
 }
 .together-block{
   border: 1rpx solid #000;
-  height:24rpx;
-  line-height: 24rpx;
-  font-size: 12rpx;
+  height:32rpx;
+  line-height: 32rpx;
+  font-size: 14rpx;
   padding:0 5rpx;
 }
 .statistic-block{

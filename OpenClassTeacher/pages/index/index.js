@@ -58,8 +58,8 @@ Page({
         right:8
       },
        {
-        left:7,
-        right:5
+        left:8,
+        right:8
       }
     ],
     defaultLineGroups:[10,10,10,10],
@@ -383,12 +383,27 @@ Page({
     }
     if(!this.data.form.studentNum || this.data.form.studentNum == "0"){
       return dd.showToast({
-        content:" 请输入有效人数"
+        content:" 请输入有效人数 "
       })
     }
     if(!this.data.form.classTime){
       return dd.showToast({
-        content:" 请选择开课时间"
+        content:" 请选择开课时间 "
+      })
+    }
+    if(!this.data.form.teachingInfo){
+      return dd.showToast({
+        content:" 请填写教学内容 "
+      })
+    }
+    if(!this.data.tableData.data.length){
+      return dd.showToast({
+        content:" 请至少填写一条教学活动 "
+      })
+    }
+    if(!this.data.activityData.data.length){
+      return dd.showToast({
+        content:" 请至少填写一条学生活动 "
       })
     }
     request('/class/submit',this.data.form).then(data=>{
