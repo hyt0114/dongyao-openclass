@@ -100,7 +100,7 @@ Page({
       this.setData({
         processSeconds:time
       })
-      let index = this.findProgressIndexById("main");
+      var index = this.data.progressbars.findIndex(p=>p.primary==true);
       if(index != -1){
         this.setData({
           ['progressbars['+index+'].progress']:this.data.processSeconds / this.data.maxTime * 100
@@ -115,20 +115,15 @@ Page({
     })
     clearInterval(this.data.beginClassId)
   },
-  findProgressIndexById(id){
-    return this.data.progressbars.findIndex(p=>{
-      return p.id == id;
-    });
-  },
   /**
    * 记录
    */
   record(event){
-    let key = event.target.dataset.key;
+    let index = event.target.dataset.index;
     if(!this.data.teaching) return;
-    if(key == "main")
+    let progress = this.data.progressbars[index];
+    if(progress.primary)
       return;//主进程不需要记录
-    let index = this.findProgressIndexById(key);
     if(index){
       let processTime = this.data.processSeconds;
       let recordTime = processTime - this.data.lastCalcSeconds;
@@ -167,11 +162,11 @@ Page({
     })
   },
   feedback(event){
-    let key = event.target.dataset.key;
+    let index = event.target.dataset.index;
     if(!this.data.teaching) return;
-    if(key == "main")
+    let progress = this.data.progressbars[index];
+    if(progress.primary)
       return;//主进程不需要记录
-    let index = this.findProgressIndexById(key);
     if(index){
       let lastAddSeconds = this.data.progressbars[index].lastAddSeconds;
       let seconds = this.data.progressbars[index].seconds;

@@ -37,7 +37,7 @@
      <view class="progress-block">
         <view class="progress-bar" a:for="{{progressbars}}">
           <view class="progress-title">{{item.title}}</view>
-          <view class="progress " onTap="record" data-key="{{item.id}}">
+          <view class="progress " onTap="record" data-index="{{index}}">
             <view class="outter">
               <view class="inner {{item.primary ? 'main' : themes[index%themes.length]}}" style="width:{{item.progress}}%;"></view>
             </view>
@@ -46,7 +46,7 @@
           <view class="progress-btn">
             <view class="btn btn-primary btn-mini"  a:if="{{item.primary && !teaching}}" onTap="startClass">{{item.progress? '继续':'开始'}}</view>
             <view class="btn btn-danger btn-mini"  a:if="{{item.primary && teaching}}" onTap="pauseClass">暂停</view>
-            <view class="btn btn-default btn-mini" a:if="{{item.lastAdd && teaching}}" onTap="feedback" data-key="{{item.id}}">撤销</view>
+            <view class="btn btn-default btn-mini" a:if="{{item.lastAdd && teaching}}" onTap="feedback" data-index="{{index}}">撤销</view>
           </view>
         </view>
       </view>
